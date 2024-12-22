@@ -6,10 +6,13 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
+  // Enable CORS
+  app.enableCors();
+  
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
-    .setTitle('Music Library API for Voosh Assignment-Vikrant')
+    .setTitle('Music Library API')
     .setDescription('REST API for managing music library')
     .setVersion('1.0')
     .addBearerAuth()
@@ -18,6 +21,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  // Use process.env.PORT for Vercel
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap(); 
