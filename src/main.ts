@@ -16,7 +16,7 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
-    .setTitle('Music Library API- Voosh_assignment-vikrant')
+    .setTitle('Music Library API- Voosh_assignment-vikrant ')
     .setDescription('REST API for managing music library')
     .setVersion('1.0')
     .addBearerAuth()
